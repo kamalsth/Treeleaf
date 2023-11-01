@@ -38,7 +38,6 @@ public class RegisterUserDto {
     private String phone;
 
 
-
     public User mapToUser() {
         User user = new User();
         user.setUsername(username);

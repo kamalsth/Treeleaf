@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class GlobalExceptionHandler {
     @ExceptionHandler(SignatureException.class)
     public ResponseEntity<?> handleSignatureException(SignatureException ex) {
-        CustomMessage errorResponse=new CustomMessage("Invalid JWT signature found, token is invalid");
+        CustomMessage errorResponse = new CustomMessage("Invalid JWT signature found, token is invalid");
         return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
     }
 

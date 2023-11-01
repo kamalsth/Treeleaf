@@ -15,10 +15,9 @@ import java.util.Date;
 @Component
 public class JwtTokenUtil {
 
+    SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
     @Value("${jwt.expiration}")
     private long expiration;
-    SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
-
 
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder()

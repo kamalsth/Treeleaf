@@ -70,38 +70,4 @@ public class UserService implements UserDetailsService {
         return new PasswordEncoder().encodePassword(password);
     }
 
-//    public void changePassword(String username, String newPassword) {
-//        Optional<User> user = userRepository.findByUsername(username);
-//        if (user.isEmpty()) {
-//            throw new UsernameNotFoundException("User not found with username: " + username);
-//        }
-//        user.get().setPassword(hashPassword(newPassword));
-//        userRepository.save(user.get());
-//    }
-
-//    public ResponseEntity<?> changePassword(ChangePasswordDto requestPassword) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String username = authentication.getName();
-//        UserDetails userDetails = loadUserByUsername(username);
-//        if (!new PasswordEncoder().matches(requestPassword.getOldPassword(), userDetails.getPassword())) {
-//            return ResponseEntity.badRequest().body(new CustomMessage("Old password is not correct"));
-//
-//        }else if(requestPassword.getOldPassword().equals(requestPassword.getNewPassword())){
-//            return ResponseEntity.badRequest().body(new CustomMessage("Old password and new password should not be same"));
-//        }
-//        changePassword(username, requestPassword.getNewPassword());
-//        return ResponseEntity.ok(new CustomMessage("Password changed successfully"));
-//    }
-
-
-//    public ResponseEntity<?> getCurrentUser(){
-//        Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
-//        String username= authentication.getName();
-//        User user=getUserByUsername(username);
-//        if(user!=null){
-//            return ResponseEntity.ok(UserDetailsDto.mapToUserDetailsDto(user));
-//        }
-//        return ResponseEntity.badRequest().body(new CustomMessage("User not found"));
-//    }
-
 }

@@ -6,27 +6,27 @@ import java.util.List;
 public class Main {
     public static List<Integer> maxSumIncreasingSubsequence(int[] sequence) {
         int n = sequence.length;
-        int[] dp = new int[n];
+        int[] maxSumStore = new int[n];
         int[] previousIndex = new int[n];
 
         Arrays.fill(previousIndex, -1);
 
         for (int i = 0; i < n; i++) {
-            dp[i] = sequence[i];
+            maxSumStore[i] = sequence[i];
             for (int j = 0; j < i; j++) {
-                if (sequence[i] > sequence[j] && dp[i] < dp[j] + sequence[i]) {
-                    dp[i] = dp[j] + sequence[i];
+                if (sequence[i] > sequence[j] && maxSumStore[i] < maxSumStore[j] + sequence[i]) {
+                    maxSumStore[i] = maxSumStore[j] + sequence[i];
                     previousIndex[i] = j;
                 }
             }
         }
 
-        int maxSum = dp[0];
+        int maxSum = maxSumStore[0];
         int maxSumIndex = 0;
 
         for (int i = 1; i < n; i++) {
-            if (dp[i] > maxSum) {
-                maxSum = dp[i];
+            if (maxSumStore[i] > maxSum) {
+                maxSum = maxSumStore[i];
                 maxSumIndex = i;
             }
         }

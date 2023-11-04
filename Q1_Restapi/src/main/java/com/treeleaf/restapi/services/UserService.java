@@ -10,6 +10,8 @@ import com.treeleaf.restapi.exceptions.CustomMessage;
 import com.treeleaf.restapi.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -70,4 +72,13 @@ public class UserService implements UserDetailsService {
         return new PasswordEncoder().encodePassword(password);
     }
 
+    public ResponseEntity<?> getCurrentUser(){
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+        String username= authentication.getName();
+        User user=getUserByUsername(username);
+        if(user!=null){
+            return ResponseEntity.ok(user);
+        }
+        return ResponseEntity.badRequest().body(new CustomMessage("User not found"));
+    }
 }

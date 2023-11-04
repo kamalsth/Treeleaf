@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "blogs")
 public class BlogPost {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
     private String postTitle;
     private String postDescription;

@@ -24,8 +24,8 @@ public class BlogPostDto {
 
     public BlogPost mapToBlogPost() {
         BlogPost blogPost = new BlogPost();
-        blogPost.setPostTitle(postTitle);
-        blogPost.setPostDescription(postDescription);
+        blogPost.setPostTitle(getPostTitle());
+        blogPost.setPostDescription(getPostDescription());
         return blogPost;
     }
 }
